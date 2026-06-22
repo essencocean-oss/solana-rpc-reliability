@@ -6,7 +6,7 @@ A production-ready skill for the Solana AI Kit that provides smart RPC health mo
 - RPC health checking
 - Automatic failover
 - Retry with exponential backoff
-- Easy to integrate
+- Easy integration for AI agents
 
 ## Installation
 ```bash
