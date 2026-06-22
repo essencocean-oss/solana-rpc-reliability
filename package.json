@@ -1,12 +1,13 @@
 {
   "name": "solana-rpc-reliability",
-  "version": "1.0.0",
-  "description": "Smart RPC switching and retry logic skill for Solana AI Kit",
+  "version": "1.0.1",
+  "description": "Production-ready RPC health monitoring, failover, and retry logic for Solana AI agents",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "echo \"No tests yet\""
   },
-  "keywords": ["solana", "rpc", "reliability", "ai-agent"],
+  "keywords": ["solana", "rpc", "reliability", "failover", "ai-agent", "web3"],
   "author": "",
   "license": "MIT",
   "dependencies": {

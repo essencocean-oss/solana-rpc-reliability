@@ -1,32 +1,18 @@
-\# Solana-RPC-Reliability
+# Solana-RPC-Reliability
 
+**Production-ready RPC health monitoring, automatic failover, and retry logic for Solana AI agents.**
 
+## Overview
+This skill solves a critical pain point for AI agents: unreliable RPC connections that cause failed transactions. It automatically monitors RPC health, switches to healthy nodes, and retries with exponential backoff.
 
-\*\*Smart RPC health monitoring, automatic switching, and retry logic for Solana AI agents.\*\*
+## Features
+- Real-time RPC health checking
+- Automatic failover to healthy RPCs
+- Intelligent retry logic with exponential backoff
+- Easy integration with any Solana agent using Solana AI Kit
+- Built with `@solana/web3.js` for reliability
 
-
-
-\## Overview
-
-A production-ready skill that solves a real pain point: unstable RPC connections causing failed transactions in AI agents.
-
-
-
-\## Features
-
-\- Automatic RPC health checking
-
-\- Failover to healthy nodes
-
-\- Intelligent retry with exponential backoff
-
-\- Easy integration with any Solana agent using Solana AI Kit
-
-
-
-\## Installation
+## Installation
 
 ```bash
-
 npm install
-
