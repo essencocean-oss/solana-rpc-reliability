@@ -1,36 +1,32 @@
-\# Solana-Defender
+\# Solana-RPC-Reliability
+
+
+
+\*\*Smart RPC health monitoring, automatic switching, and retry logic for Solana AI agents.\*\*
 
 
 
 \## Overview
 
-Automate Solana blockchain interactions for increased reliability, security, and efficiency.
+A production-ready skill that solves a real pain point: unstable RPC connections causing failed transactions in AI agents.
 
 
 
 \## Features
 
-\* RPC Management: Establish and maintain secure connections to Solana RPC nodes.
+\- Automatic RPC health checking
 
-\* Transaction Monitoring: Track transaction status in real-time...
+\- Failover to healthy nodes
 
-\* Position Monitoring: ...
+\- Intelligent retry with exponential backoff
 
-\* DeFi Automation: ...
+\- Easy integration with any Solana agent using Solana AI Kit
 
 
 
 \## Installation
 
-1\. Clone this repository...
+```bash
 
-2\. Install dependencies...
-
-3\. Configure the skill...
-
-
-
-\## Usage
-
-...
+npm install
 

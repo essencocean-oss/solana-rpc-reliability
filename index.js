@@ -1,35 +1,54 @@
-const config = require('./config.json');
+const { Connection, clusterApiUrl } = require('@solana/web3.js');
 
-const SolanaDefender = {
-    start: async () => {
-        console.log('🚀 Starting Solana-Defender skill...');
-        console.log('Connected RPCs:', config.rpcUrls);
-        
-        // Basic RPC health check example
-        console.log('Monitoring RPC health and transaction reliability...');
-        // TODO: Add real RPC switching and retry logic here
-    },
+class SolanaRPCReliability {
+  constructor(options = {}) {
+    this.rpcList = options.rpcs || [
+      { url: clusterApiUrl('devnet'), name: 'devnet' },
+      { url: clusterApiUrl('mainnet-beta'), name: 'mainnet-beta' }
+    ];
+    this.currentIndex = 0;
+    console.log('✅ Solana-RPC-Reliability skill loaded');
+  }
 
-    stop: () => {
-        console.log('🛑 Stopping Solana-Defender skill...');
-    },
+  getCurrentConnection() {
+    return new Connection(this.rpcList[this.currentIndex].url, 'confirmed');
+  }
 
-    getPosition: () => {
-        console.log('📍 Getting current asset positions...');
-        // TODO: Add real position monitoring
-        return { status: "monitoring" };
-    },
-
-    getTransactionStatus: (txHash = null) => {
-        console.log('🔍 Checking transaction status...');
-        // TODO: Add real tx lookup
-        return { status: "confirmed" };
+  async switchToHealthyRpc() {
+    for (let i = 0; i < this.rpcList.length; i++) {
+      this.currentIndex = (this.currentIndex + 1) % this.rpcList.length;
+      try {
+        const conn = this.getCurrentConnection();
+        await conn.getSlot();
+        console.log(`Switched to healthy RPC: ${this.rpcList[this.currentIndex].name}`);
+        return true;
+      } catch (e) {}
     }
-};
+    return false;
+  }
 
-module.exports = SolanaDefender;
+  async sendWithRetry(rawTransaction, maxAttempts = 3) {
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+      try {
+        const conn = this.getCurrentConnection();
+        const signature = await conn.sendRawTransaction(rawTransaction);
+        console.log(`Transaction sent successfully: ${signature}`);
+        return signature;
+      } catch (error) {
+        console.log(`Attempt ${attempt} failed. Retrying...`);
+        await this.switchToHealthyRpc();
+        await new Promise(r => setTimeout(r, 1000 * attempt));
+      }
+    }
+    console.log("All retry attempts failed");
+    return null;
+  }
+}
 
-// Auto start when file is run directly
+module.exports = SolanaRPCReliability;
+
+// Test when running directly
 if (require.main === module) {
-    SolanaDefender.start();
+  const skill = new SolanaRPCReliability();
+  console.log("Ready for use in AI agents");
 }
