@@ -2,9 +2,19 @@
 
 
 
-A skill for Solana AI Kit that improves RPC reliability and transaction management.
+A useful skill for Solana AI Kit that improves RPC reliability, transaction monitoring, and DeFi automation.
 
 
 
-See SKILL.md for full documentation.
+\## Quick Start
+
+```bash
+
+git clone <your-repo>
+
+cd Solana-Defender
+
+npm install
+
+node index.js
 

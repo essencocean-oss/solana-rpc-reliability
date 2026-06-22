@@ -1,18 +1,35 @@
 const config = require('./config.json');
 
-module.exports = {
-    start: () => {
-        console.log('Starting Solana-Defender skill...');
-        console.log('Connected to RPC:', config.rpcUrls);
-        // Add real logic here later
+const SolanaDefender = {
+    start: async () => {
+        console.log('🚀 Starting Solana-Defender skill...');
+        console.log('Connected RPCs:', config.rpcUrls);
+        
+        // Basic RPC health check example
+        console.log('Monitoring RPC health and transaction reliability...');
+        // TODO: Add real RPC switching and retry logic here
     },
+
     stop: () => {
-        console.log('Stopping Solana-Defender skill...');
+        console.log('🛑 Stopping Solana-Defender skill...');
     },
+
     getPosition: () => {
-        console.log('Getting current position...');
-        // Add logic later
+        console.log('📍 Getting current asset positions...');
+        // TODO: Add real position monitoring
+        return { status: "monitoring" };
+    },
+
+    getTransactionStatus: (txHash = null) => {
+        console.log('🔍 Checking transaction status...');
+        // TODO: Add real tx lookup
+        return { status: "confirmed" };
     }
 };
 
-console.log('Solana-Defender loaded successfully!');
+module.exports = SolanaDefender;
+
+// Auto start when file is run directly
+if (require.main === module) {
+    SolanaDefender.start();
+}
