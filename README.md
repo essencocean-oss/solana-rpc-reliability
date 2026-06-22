@@ -1,20 +1,32 @@
-\# Solana-Defender
+\# Solana-RPC-Reliability
 
 
 
-A useful skill for Solana AI Kit that improves RPC reliability, transaction monitoring, and DeFi automation.
+\*\*A production-ready skill for Solana AI Kit\*\*
 
 
 
-\## Quick Start
+Smart RPC health monitoring, automatic failover, and intelligent retry logic for reliable Solana AI agents.
+
+
+
+\## Features
+
+\- Automatic RPC health checking
+
+\- Failover to healthy nodes
+
+\- Retry with exponential backoff
+
+\- Easy to integrate with any agent
+
+
+
+\## Installation
+
+
 
 ```bash
 
-git clone <your-repo>
-
-cd Solana-Defender
-
 npm install
-
-node index.js
 
